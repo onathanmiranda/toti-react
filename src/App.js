@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import style from './App.module.css';
+
+function OrderedList(props){
+
+  //const items = props.items;
+  const { items } = props;
+  
+  return (
+    <ol className={style.listaOrdenada}>
+      {items.map((item) => {
+        return <li>{item}</li>
+      })}
+    </ol>
+  )
+}
+
+function UnorderedList(props){
+  
+  const { items } = props;
+
+  return (
+    <ul className={style.listaNaoOrdenada}>
+      {items.map((item) => {
+        return <li>{item}</li>
+      })}
+    </ul>
+  )
+}
+
+function Listas(){
+
+  const comidasPreferidas = [ "Hamburger", "Picanha", "Sopa de Ervilha", "Feijoada" ]
+  const filmesPreferidos = [ "Harry Potter", "Dr. Estranho", "Game of Thrones", "The Lord of the Rings" ]
+
+  return (
+    <div className={style.container}>
+      <p className={style.paragraph}>Nathan de Souza Miranda</p>
+      <OrderedList items={comidasPreferidas}/>
+      <UnorderedList items={filmesPreferidos} />
+    </div>
+  );
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Listas />
     </div>
   );
 }
